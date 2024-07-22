@@ -10,10 +10,11 @@ systemctl start php-fpm
 systemctl enable php-fpm
 git clone https://github.com/citadelict/tooling2.git
 mkdir /var/www/html
-sudo cp -rf tooling-1/html/*  /var/www/html/
-cd tooling-1
+sudo cp -rf tooling2/html/*  /var/www/html/
+cd tooling2
 mysql -h citatech-database.cb42aocm8t1r.eu-central-1.rds.amazonaws.com -u admin -p toolingdb < tooling-db.sql
 sudo touch healthstatus
+cd /var/www/html
 sudo sed -i "s/$db = mysqli_connect('mysql.tooling.svc.cluster.local', 'admin', 'admin', 'tooling');/$db = mysqli_connect('citatech-database.cb42aocm8t1r.eu-central-1.rds.amazonaws.com', 'admin', 'guessWhat232', 'toolingdb');/g" functions.php
 chcon -t httpd_sys_rw_content_t /var/www/html/ -R
 sudo systemctl restart httpd
