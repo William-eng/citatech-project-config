@@ -1,5 +1,6 @@
 #!/bin/bash
 mkdir /var/www/
+sudo mount -t efs -o tls,accesspoint=fsap-0a1bfe0a6753accb9 fs-0142678e946eb3ed4:/ /var/www/
 yum install -y httpd 
 systemctl start httpd
 systemctl enable httpd
@@ -13,6 +14,7 @@ mkdir /var/www/html
 sudo cp -rf tooling2/html/*  /var/www/html/
 cd tooling2
 mysql -h citatech-database.cb42aocm8t1r.eu-central-1.rds.amazonaws.com -u admin -p toolingdb < tooling-db.sql
+cd /home/ec2-user
 sudo touch healthstatus
 cd /var/www/html
 sudo sed -i "s/$db = mysqli_connect('mysql.tooling.svc.cluster.local', 'admin', 'admin', 'tooling');/$db = mysqli_connect('citatech-database.cb42aocm8t1r.eu-central-1.rds.amazonaws.com', 'admin', 'guessWhat232', 'toolingdb');/g" functions.php
