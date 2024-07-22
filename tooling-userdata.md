@@ -1,6 +1,5 @@
 #!/bin/bash
 mkdir /var/www/
- /var/www/
 yum install -y httpd 
 systemctl start httpd
 systemctl enable httpd
