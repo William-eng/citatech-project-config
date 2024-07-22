@@ -15,7 +15,7 @@ sudo cp -rf tooling-1/html/*  /var/www/html/
 cd tooling-1
 mysql -h citatech-database.cb42aocm8t1r.eu-central-1.rds.amazonaws.com -u admin -p toolingdb < tooling-db.sql
 sudo touch healthstatus
-sudo sed -i "s/$db = mysqli_connect('mysql.tooling.svc.cluster.local', 'admin', 'admin', 'tooling');/$db = mysqli_connect('savvytek-database.c4scns6d3saq.eu-west-2.rds.amazonaws.com', 'savvytekadmin', 'admin12345', 'toolingdb');/g" functions.php
+sudo sed -i "s/$db = mysqli_connect('mysql.tooling.svc.cluster.local', 'admin', 'admin', 'tooling');/$db = mysqli_connect('citatech-database.cb42aocm8t1r.eu-central-1.rds.amazonaws.com', 'admin', 'guessWhat232', 'toolingdb');/g" functions.php
 chcon -t httpd_sys_rw_content_t /var/www/html/ -R
 sudo systemctl restart httpd
 sudo systemctl status httpd

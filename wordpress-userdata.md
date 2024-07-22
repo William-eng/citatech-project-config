@@ -20,7 +20,7 @@ sudo touch healthstatus
 sed -i "s/localhost/citatech-database.cb42aocm8t1r.eu-central-1.rds.amazonaws.com/g" wp-config.php 
 sed -i "s/username_here/admin/g" wp-config.php 
 sed -i "s/password_here/guessWhat232/g" wp-config.php 
-sed -i "s/database_name_here/citatech-database/g" wp-config.php 
+sed -i "s/database_name_here/wordpressdb/g" wp-config.php 
 chcon -t httpd_sys_rw_content_t /var/www/html/ -R
 sudo systemctl restart httpd
 sudo systemctl status httpd
