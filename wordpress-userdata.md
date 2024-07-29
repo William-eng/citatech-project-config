@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir /var/www/
-sudo mount -t efs -o tls,accesspoint=fsap-0a1bfe0a6753accb9 fs-0142678e946eb3ed4:/ /var/www/
+sudo mount -t efs -o tls,accesspoint=fsap-0628b0df403efa1c8 fs-049e3d5e1f789eee1:/ /var/www/
 yum install -y httpd 
 systemctl start httpd
 systemctl enable httpd
@@ -17,7 +17,7 @@ mkdir /var/www/html/
 sudo cp -R /wordpress/* /var/www/html/
 cd /var/www/html/
 sudo touch healthstatus
-sed -i "s/localhost/citatech-database.cb42aocm8t1r.eu-central-1.rds.amazonaws.com/g" wp-config.php 
+sed -i "s/localhost/citatech-db.c1wcugy04w3l.us-east-2.rds.amazonaws.com/g" wp-config.php 
 sed -i "s/username_here/admin/g" wp-config.php 
 sed -i "s/password_here/guessWhat232/g" wp-config.php 
 sed -i "s/database_name_here/wordpressdb/g" wp-config.php 
